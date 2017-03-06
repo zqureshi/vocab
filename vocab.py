@@ -21,20 +21,18 @@ class CLI:
         """Sync lists to Airtable"""
 
         def load(self, list_url, endpoint, key):
-            airtable = Airtable(endpoint, key)
-
             words = VocabularyCom().collect(list_url)
-            airtable.load(words)
-
-            print 'List loaded to Airtable.'
+            self._load(words, endpoint, key)
 
         def load_from_stdin(self, endpoint, key):
             words = json.load(sys.stdin)
+            self._load(words, endpoint, key)
 
+        def _load(self, words, endpoint, key):
             airtable = Airtable(endpoint, key)
             airtable.load(words)
 
-            print 'List loaded to Airtable.'
+            print 'Loaded %d terms to Airtable.' % len(words)
 
 if __name__ == '__main__':
     fire.Fire(CLI)
