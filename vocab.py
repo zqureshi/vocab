@@ -28,6 +28,13 @@ class CLI:
 
             print 'List loaded to Airtable.'
 
+        def load_from_stdin(self, endpoint, key):
+            words = json.load(sys.stdin)
+
+            airtable = Airtable(endpoint, key)
+            airtable.load(words)
+
+            print 'List loaded to Airtable.'
 
 if __name__ == '__main__':
     fire.Fire(CLI)
