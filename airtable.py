@@ -1,9 +1,8 @@
-import json
 import logging
 import requests
-import sys
 
 logger = logging.getLogger(__name__)
+
 
 class Airtable:
     def __init__(self, endpoint, key):
@@ -12,7 +11,6 @@ class Airtable:
         self.headers = {
             'Authorization': 'Bearer ' + key,
         }
-
 
     def load(self, words):
         """Given word descriptions collected from a source, load it into a Base"""

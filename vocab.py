@@ -5,6 +5,7 @@ import sys
 from source import VocabularyCom
 from airtable import Airtable
 
+
 class CLI:
     class source:
         """Import word lists from various sources"""
@@ -33,6 +34,7 @@ class CLI:
             airtable.load(words)
 
             print 'Loaded %d terms to Airtable.' % len(words)
+
 
 if __name__ == '__main__':
     fire.Fire(CLI)

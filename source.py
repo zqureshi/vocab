@@ -5,6 +5,7 @@ from bs4 import BeautifulSoup
 
 logger = logging.getLogger(__name__)
 
+
 def fetch_page(url):
     """Given a URL returns a BeautifulSoup object of its contents"""
     logger.debug('fetching page ' + url)
@@ -14,6 +15,7 @@ def fetch_page(url):
         raise Exception('Error %d while fetching page' % request.status_code)
 
     return BeautifulSoup(request.text, 'html.parser')
+
 
 class VocabularyCom:
     def collect(self, url):
