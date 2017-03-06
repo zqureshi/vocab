@@ -3,6 +3,7 @@ import json
 import sys
 
 from source import VocabularyCom
+from airtable import Airtable
 
 class CLI:
     class source:
@@ -15,6 +16,17 @@ class CLI:
                 print json.dumps(result, indent=4, sort_keys=True)
             else:
                 json.dump(result, sys.stdout)
+
+    class airtable:
+        """Sync lists to Airtable"""
+
+        def load(self, list_url, endpoint, key):
+            airtable = Airtable(endpoint, key)
+
+            words = VocabularyCom().collect(list_url)
+            airtable.load(words)
+
+            print 'List loaded to Airtable.'
 
 
 if __name__ == '__main__':
