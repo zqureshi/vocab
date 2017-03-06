@@ -6,3 +6,4 @@ verify_ssl = true
 requests = "*"
 beautifulsoup4 = "*"
 fire = "*"
+flake8 = "*"
